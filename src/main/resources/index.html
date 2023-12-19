@@ -1,41 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
 
 </body>
 <script>
-	let regexp = /[a-z]{2}/g; //알파벳 소문자 2~5개
-	let strs = ["henry", "Hel"]
-	console.log(regexp.test(strs[0]), regexp.lastIndex)	
-	console.log(regexp.test(strs[1]), regexp.lastIndex) // 부분 일치 포함 하지만 2부터 찾으므로 false
-	console.log(regexp.lastIndex)
-    
-	let regexp2 = /\d{2,}/g
-	let str = "그의 나이는 10살이고 키는 180이다."
-	let cnt=0;
-	while(regexp2.test(str)){
-	    cnt++;
-	}
-	console.log(`${str}에는 ${regexp2}가 ${cnt}번 나온다.`)
-	
-	let regexp3 = /(?<val>\d+)(?<unit>.+\b)/g
-	let str3 = "그의 키는 169cm 이다."
-	let result3 = regexp3.exec(str3);
-	console.log(regexp3.lastIndex, result3)
-	
- 	let str4 = "독도는 우리땅!"
+    let regexp1 = /[a-z]{2}/g
+    let str1 = ["henry", "Her"];
+    console.log(regexp1.test(str1[0]), regexp1.lastIndex)
+    regexp1.lastIndex = 0;
+    console.log(regexp1.test(str1[1]), regexp1.lastIndex)
+
+    let regexp2 = /\d{2,}/g
+    let str2 = "그의 나이는 10살이고 키는 180이다."
+    let cnt = 0;
+    while(regexp2.test(str2)){
+        cnt++;
+        console.log(regexp2.lastIndex);
+    }
+    console.log("cnt: ", cnt);
+
+    let regexp3 = /(?<val>\d+)(?<unit>.+\b)/g
+    let str3 = "그의 키는 169cm 이다."
+    let result = regexp3.exec(str3);
+    console.log(regexp3.lastIndex, result)
+
+    let str4 = "독도는 우리땅";
     console.log(str4.match(/[0-9]+/))
-	console.log(str4.match(/[가-힝]+/g))
- 	console.log(str4.match(/[가-힝]+/))
- 	
- 	const str5 = "I think Ruth's dog is cuter than your dog!";
-	const regexp5 = /dog/g
-	console.log(str5.replace(regexp5, 'monkey'));
-	console.log(str5.replaceAll(regexp5, 'monkey'));
-	
+    console.log(str4.match(/[가-힣]+/g))
+    console.log(str4.match(/[가-힣]+/))
+
+    let str5 = "My dog is cuter than your dog."
+    let regexp5 = /dog/g
+    console.log(str5.replace(regexp5, 'cat'))
+    console.log(str5.replaceAll(regexp5, 'cat'))
+
 </script>
 </html>
